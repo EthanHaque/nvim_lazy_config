@@ -17,6 +17,7 @@ return {
 				"html",
 				"typescript",
 				"tsx",
+				"typst",
 			},
 			sync_install = false,
 			highlight = { enable = true, use_languagetree = true },

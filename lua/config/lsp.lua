@@ -1,1 +1,1 @@
-vim.lsp.enable({ "ruff", "lua_ls", "ty", "vtsls", "eslint", "bash", "marksman", "vespa", "rumdl" })
+vim.lsp.enable({ "ruff", "lua_ls", "ty", "vtsls", "eslint", "bash", "marksman", "vespa", "rumdl", "tinymist" })

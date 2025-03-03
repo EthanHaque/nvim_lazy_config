@@ -12,6 +12,7 @@ return {
 			["yaml"] = { "prettier" },
 			["markdown"] = { "prettier" },
 			["lua"] = { "stylua" },
+			["typost"] = { "typstyle" },
 		},
 		format_on_save = {
 			timeout_ms = 500,
