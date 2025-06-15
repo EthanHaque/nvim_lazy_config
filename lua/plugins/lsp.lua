@@ -55,7 +55,7 @@ return {
 
 
     local servers = {
-      "pyright", "ts_ls", "clangd", "rust_analyzer", "gopls", "jdtls",
+      "pyright", "ts_ls", "clangd"
     }
 
     mason_lspconfig.setup({
