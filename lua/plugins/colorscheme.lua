@@ -1,5 +1,5 @@
 return {
-  "datsfilipe/cyberdream.nvim",
+  "scottmckendry/cyberdream.nvim",
   lazy = false,
   priority = 1000,
   config = function()
