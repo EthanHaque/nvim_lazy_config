@@ -55,7 +55,7 @@ return {
 
 
     local servers = {
-      "pyright", "ts_ls", "clangd"
+      "pyright", "clangd"
     }
 
     mason_lspconfig.setup({
