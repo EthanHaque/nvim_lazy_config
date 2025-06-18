@@ -53,21 +53,25 @@ return {
       vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { noremap = true, silent = true, buffer = bufnr, desc = "Next Diagnostic" })
     end
 
-
     local servers = {
-      "pyright", "clangd"
+      "pyright", "clangd", "rust_analyzer", "vtsls"
     }
 
     mason_lspconfig.setup({
       ensure_installed = servers,
+      automatic_enable = {
+        exclude = {
+          "rust_analyzer",
+          "pyright",
+          "vtsls"
+        }
+      }
     })
 
-    for _, server_name in ipairs(servers) do
-      lspconfig[server_name].setup({
+    lspconfig.pyright.setup({
         on_attach = on_attach,
         capabilities = capabilities,
-      })
-    end
+    })
 
     lspconfig.rust_analyzer.setup({
         on_attach = on_attach,
@@ -77,6 +81,47 @@ return {
             checkOnSave = { command = "clippy" },
           },
         },
+    })
+
+
+    lspconfig.vtsls.setup({
+      on_attach = on_attach,
+      capabilities = capabilities,
+      filetypes = {
+        "javascript",
+        "javascriptreact",
+        "javascript.jsx",
+        "typescript",
+        "typescriptreact",
+        "typescript.tsx",
+      },
+      settings = {
+        complete_function_calls = true,
+        vtsls = {
+          enableMoveToFileCodeAction = true,
+          autoUseWorkspaceTsdk = true,
+          experimental = {
+            maxInlayHintLength = 30,
+            completion = {
+              enableServerSideFuzzyMatch = true,
+            },
+          },
+        },
+        typescript = {
+          updateImportsOnFileMove = { enabled = "always" },
+          suggest = {
+            completeFunctionCalls = true,
+          },
+          inlayHints = {
+            enumMemberValues = { enabled = true },
+            functionLikeReturnTypes = { enabled = true },
+            parameterNames = { enabled = "literals" },
+            parameterTypes = { enabled = true },
+            propertyDeclarationTypes = { enabled = true },
+            variableTypes = { enabled = false },
+          },
+        },
+      },
     })
   end,
 }
