@@ -17,14 +17,6 @@ autocmd("BufWritePre", {
   command = ":%s/\\s\\+$//e",
 })
 
--- Auto format on save
-autocmd("BufWritePre", {
-  pattern = "*",
-  callback = function()
-    vim.lsp.buf.format({ async = false })
-  end,
-})
-
 -- Don"t auto comment new lines
 autocmd("BufEnter", {
   pattern = "*",
