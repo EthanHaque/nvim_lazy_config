@@ -51,6 +51,17 @@ return {
 
       -- Move to the next diagnostic
       vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { noremap = true, silent = true, buffer = bufnr, desc = "Next Diagnostic" })
+
+      -- Add folder to workspace
+      vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, { noremap = true, silent = true, buffer = bufnr, desc = "Add Workspace Folder" })
+
+      -- Remove folder from workspace
+      vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, { noremap = true, silent = true, buffer = bufnr, desc = "Remove Workspace Folder" })
+
+      -- View workspace folders
+      vim.keymap.set('n', '<leader>wl', function()
+        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+      end, { noremap = true, silent = true, buffer = bufnr, desc = "List Workspace Folders" })
     end
 
     local servers = {
