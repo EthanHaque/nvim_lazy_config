@@ -65,7 +65,7 @@ return {
     end
 
     local servers = {
-      "pyright", "clangd", "rust_analyzer", "vtsls"
+      "pyright", "clangd", "rust_analyzer", "vtsls", "ruff", "eslint-lsp"
     }
 
     mason_lspconfig.setup({
@@ -74,14 +74,47 @@ return {
         exclude = {
           "rust_analyzer",
           "pyright",
-          "vtsls"
+          "vtsls",
+          "ruff"
         }
       }
     })
 
+    lspconfig.eslint.setup({
+        on_attach = function(client, bufnr)
+            vim.api.nvim_create_autocmd("BufWritePre", {
+                buffer = bufnr,
+                command = "EslintFixAll",
+            })
+        end,
+    })
+
+
+    lspconfig.ruff.setup {
+        capabilities = lsp_capabilities,
+        on_attach = function(client)
+            if client.name == 'ruff' then
+                -- Disable hover in favor of Pyright
+                client.server_capabilities.hoverProvider = false
+            end
+        end
+    }
+
     lspconfig.pyright.setup({
         on_attach = on_attach,
-        capabilities = capabilities,
+        capabilities = lsp_capabilities,
+        settings = {
+            pyright = {
+                -- Using Ruff's import organizer
+                disableOrganizeImports = true,
+            },
+            python = {
+                analysis = {
+                    -- Ignore all files for analysis to exclusively use Ruff for linting
+                    ignore = { '*' },
+                },
+            },
+        },
     })
 
     lspconfig.rust_analyzer.setup({
