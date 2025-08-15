@@ -65,7 +65,7 @@ return {
     end
 
     local servers = {
-      "pyright", "clangd", "rust_analyzer", "vtsls", "ruff", "eslint-lsp"
+      "pyright", "ruff", "clangd", "rust_analyzer", "vtsls",
     }
 
     mason_lspconfig.setup({
@@ -75,7 +75,6 @@ return {
           "rust_analyzer",
           "pyright",
           "vtsls",
-          "ruff"
         }
       }
     })
@@ -89,16 +88,6 @@ return {
         end,
     })
 
-
-    lspconfig.ruff.setup {
-        capabilities = lsp_capabilities,
-        on_attach = function(client)
-            if client.name == 'ruff' then
-                -- Disable hover in favor of Pyright
-                client.server_capabilities.hoverProvider = false
-            end
-        end
-    }
 
     lspconfig.pyright.setup({
         on_attach = on_attach,
