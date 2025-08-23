@@ -1,16 +1,16 @@
 return {
   "neovim/nvim-lspconfig",
   dependencies = {
-    { "williamboman/mason.nvim", config = true, enabled = not os.getenv("NIX_PATH") ~= nil },
-    { "williamboman/mason-lspconfig.nvim", enabled = not os.getenv("NIX_PATH") ~= nil },
+    { "williamboman/mason.nvim", config = true },
+    "williamboman/mason-lspconfig.nvim",
     { "j-hui/fidget.nvim", opts = {} },
     "hrsh7th/cmp-nvim-lsp",
     "nvim-telescope/telescope.nvim",
   },
   config = function()
     local lspconfig = require("lspconfig")
-    -- We'll check the environment again here to conditionally set up Mason
-    local is_nixos = os.getenv("NIX_PATH") ~= nil local cmp_nvim_lsp = require("cmp_nvim_lsp")
+    local mason_lspconfig = require("mason-lspconfig")
+    local cmp_nvim_lsp = require("cmp_nvim_lsp")
     local telescope_builtin = require("telescope.builtin")
 
     local capabilities = cmp_nvim_lsp.default_capabilities()
@@ -68,35 +68,30 @@ return {
       "pyright", "ruff", "clangd", "rust_analyzer", "vtsls",
     }
 
-    -- Conditionally call mason_lspconfig setup
-    -- This block will only be executed if not on NixOS
-    if not is_nixos then
-      local mason_lspconfig = require("mason-lspconfig")
-      mason_lspconfig.setup({
-        ensure_installed = servers,
-        automatic_enable = {
-          exclude = {
-            "rust_analyzer",
-            "pyright",
-            "vtsls",
-          }
+    mason_lspconfig.setup({
+      ensure_installed = servers,
+      automatic_enable = {
+        exclude = {
+          "rust_analyzer",
+          "pyright",
+          "vtsls",
         }
-      })
-    end
+      }
+    })
 
     lspconfig.eslint.setup({
         on_attach = function(client, bufnr)
-          vim.api.nvim_create_autocmd("BufWritePre", {
-              buffer = bufnr,
-              command = "EslintFixAll",
-          })
+            vim.api.nvim_create_autocmd("BufWritePre", {
+                buffer = bufnr,
+                command = "EslintFixAll",
+            })
         end,
     })
 
 
     lspconfig.pyright.setup({
         on_attach = on_attach,
-        capabilities = capabilities,
+        capabilities = lsp_capabilities,
         settings = {
             pyright = {
                 -- Using Ruff's import organizer
