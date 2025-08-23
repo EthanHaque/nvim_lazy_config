@@ -65,7 +65,7 @@ return {
     end
 
     local servers = {
-      "pyright", "ruff", "rust_analyzer", "vtsls",
+      "pyright", "rust_analyzer", "vtsls",
     }
 
     mason_lspconfig.setup({
