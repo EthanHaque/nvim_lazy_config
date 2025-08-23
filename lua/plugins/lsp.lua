@@ -65,7 +65,7 @@ return {
     end
 
     local servers = {
-      "pyright", "rust_analyzer", "vtsls",
+      "rust_analyzer", "vtsls",
     }
 
     mason_lspconfig.setup({
@@ -73,7 +73,6 @@ return {
       automatic_enable = {
         exclude = {
           "rust_analyzer",
-          "pyright",
           "vtsls",
         }
       }
@@ -88,25 +87,12 @@ return {
         end,
     })
 
-
-    lspconfig.pyright.setup({
-        on_attach = on_attach,
-        capabilities = lsp_capabilities,
-        settings = {
-            pyright = {
-                -- Using Ruff's import organizer
-                disableOrganizeImports = true,
-            },
-            python = {
-                analysis = {
-                    -- Ignore all files for analysis to exclusively use Ruff for linting
-                    ignore = { '*' },
-                },
-            },
-        },
+    lspconfig.ruff.setup({
+      on_attach = on_attach,
+      capabilities = capabilities,
     })
 
-    lspconfig.ruff.setup({
+    lspconfig.pyrefly.setup({
       on_attach = on_attach,
       capabilities = capabilities,
     })
