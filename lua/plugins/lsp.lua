@@ -65,7 +65,7 @@ return {
     end
 
     local servers = {
-      "rust_analyzer", "vtsls" 
+      "rust_analyzer", "vtsls", "pyrefly"
     }
 
     mason_lspconfig.setup({
@@ -74,6 +74,7 @@ return {
         exclude = {
           "rust_analyzer",
           "vtsls",
+          "pyrefly",
         }
       }
     })
