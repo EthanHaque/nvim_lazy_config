@@ -92,10 +92,30 @@ return {
       capabilities = capabilities,
     })
 
-    lspconfig.pyrefly.setup({
-      on_attach = on_attach,
-      capabilities = capabilities,
-    })
+    local configs = require('lspconfig.configs')
+    if not configs.pyrefly then
+    configs.pyrefly = {
+        default_config = {
+        cmd = { 'pyrefly', 'lsp' },
+        filetypes = { 'python' },
+        root_dir = function(fname)
+            return lspconfig.util.root_pattern(
+            'pyrefly.toml',
+            'pyproject.toml',
+            'setup.py',
+            'setup.cfg',
+            'requirements.txt',
+            'Pipfile',
+            '.git'
+            )(fname) or lspconfig.util.path.dirname(fname)
+        end,
+        settings = {},
+        on_exit = function(code, _, _)
+            vim.notify('Closing Pyrefly LSP exited with code: ' .. code, vim.log.levels.INFO)
+        end,
+        },
+    }
+    end
 
     lspconfig.rust_analyzer.setup({
         on_attach = on_attach,
