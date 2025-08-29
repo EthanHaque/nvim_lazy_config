@@ -92,21 +92,10 @@ return {
       capabilities = capabilities,
     })
 
-    -- TODO: get rid of this hack
-    vim.lsp.config('pyrefly', {
-    cmd = { 'pyrefly', 'lsp' },
-    filetypes = { 'python' },
-    root_markers = {
-        'pyrefly.toml',
-        'pyproject.toml',
-        'setup.py',
-        'setup.cfg',
-        'requirements.txt',
-        'Pipfile',
-        '.git'
-    },
+    lspconfig.ty.setup({
+      on_attach = on_attach,
+      capabilities = capabilities,
     })
-    vim.lsp.enable('pyrefly')
 
     lspconfig.rust_analyzer.setup({
         on_attach = on_attach,
