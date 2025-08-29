@@ -92,7 +92,7 @@ return {
       capabilities = capabilities,
     })
 
-    # TODO: get rid of this hack
+    -- TODO: get rid of this hack
     vim.lsp.config('pyrefly', {
     cmd = { 'pyrefly', 'lsp' },
     filetypes = { 'python' },
