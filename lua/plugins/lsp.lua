@@ -96,7 +96,7 @@ return {
      if not configs.ty then
          configs.ty = {
              default_config = {
-                 cmd = { "ty", "lsp" },
+                 cmd = { "ty", "server" },
                  filetypes = { "python" },
                  root_dir = lspconfig.util.root_pattern("pyproject.toml", ".git"),
              },
