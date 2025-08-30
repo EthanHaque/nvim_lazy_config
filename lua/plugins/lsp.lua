@@ -92,10 +92,17 @@ return {
       capabilities = capabilities,
     })
 
-    lspconfig.ty_ls.setup({
-      cmd = { "ty", "lsp" },
-      filetypes = { "python" },
-      root_dir = lspconfig.util.root_pattern("pyproject.toml", ".git"),
+     local configs = require ("lspconfig.configs")
+     if not configs.ty then
+         configs.ty = {
+             default_config = {
+                 cmd = { "ty", "lsp" },
+                 filetypes = { "python" },
+                 root_dir = lspconfig.util.root_pattern("pyproject.toml", ".git"),
+             },
+         }
+     end
+    lspconfig.ty.setup({
       on_attach = on_attach,
       capabilities = capabilities,
     })
