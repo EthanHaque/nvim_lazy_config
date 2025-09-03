@@ -93,16 +93,24 @@ return {
     })
 
      local configs = require ("lspconfig.configs")
-     if not configs.ty then
-         configs.ty = {
+     if not configs.pyrefly then
+         configs.pyrefly = {
              default_config = {
-                 cmd = { "ty", "server" },
-                 filetypes = { "python" },
-                 root_dir = lspconfig.util.root_pattern("pyproject.toml", ".git"),
+                    cmd = { 'pyrefly', 'lsp' },
+                    filetypes = { 'python' },
+                    root_markers = {
+                        'pyrefly.toml',
+                        'pyproject.toml',
+                        'setup.py',
+                        'setup.cfg',
+                        'requirements.txt',
+                        'Pipfile',
+                        '.git',
+                    },
              },
          }
      end
-    lspconfig.ty.setup({
+    lspconfig.pyrefly.setup({
       on_attach = on_attach,
       capabilities = capabilities,
     })
