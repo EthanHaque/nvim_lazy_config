@@ -1,5 +1,5 @@
 return {
-	'numToStr/Comment.nvim',
+	"numToStr/Comment.nvim",
 	opts = {
 		active = true,
 		on_config_done = nil,
@@ -64,5 +64,6 @@ return {
 
 		-- Post-hook, called after commenting is done
 		-- @type function|nil
-		post_hook = nil,}
-	}
+		post_hook = nil,
+	},
+}

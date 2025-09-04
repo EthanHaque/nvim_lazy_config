@@ -19,7 +19,7 @@ return {
 			},
 		},
 		signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
-		numhl = false,  -- Toggle with `:Gitsigns toggle_numhl`
+		numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
 		linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
 		word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
 		watch_gitdir = {
@@ -46,6 +46,5 @@ return {
 			row = 0,
 			col = 1,
 		},
-	}
-
+	},
 }
