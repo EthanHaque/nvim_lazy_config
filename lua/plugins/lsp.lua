@@ -96,17 +96,18 @@ return {
      if not configs.pyrefly then
          configs.pyrefly = {
              default_config = {
-                    cmd = { 'pyrefly', 'lsp' },
-                    filetypes = { 'python' },
-                    root_markers = {
-                        'pyrefly.toml',
-                        'pyproject.toml',
-                        'setup.py',
-                        'setup.cfg',
-                        'requirements.txt',
-                        'Pipfile',
-                        '.git',
-                    },
+                 cmd = { 'pyrefly', 'lsp' },
+                 filetypes = { "python" },
+                 root_dir = lspconfig.util.root_pattern("pyproject.toml", ".git"),
+                    -- root_markers = {
+                    --     'pyrefly.toml',
+                    --     'pyproject.toml',
+                    --     'setup.py',
+                    --     'setup.cfg',
+                    --     'requirements.txt',
+                    --     'Pipfile',
+                    --     '.git',
+                    -- },
              },
          }
      end
