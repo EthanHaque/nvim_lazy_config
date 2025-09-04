@@ -87,30 +87,25 @@ return {
         end,
     })
 
-
-    lspconfig.pyright.setup({
-        on_attach = on_attach,
-        capabilities = lsp_capabilities,
-        settings = {
-            pyright = {
-                -- Using Ruff's import organizer
-                disableOrganizeImports = true,
-            },
-            python = {
-                analysis = {
-                    -- Ignore all files for analysis to exclusively use Ruff for linting
-                    ignore = { '*' },
-                },
-            },
-        },
-    })
-
-
     lspconfig.ruff.setup({
       on_attach = on_attach,
       capabilities = capabilities,
     })
 
+     local configs = require ("lspconfig.configs")
+     if not configs.pyrefly then
+         configs.pyrefly = {
+             default_config = {
+                 cmd = { 'pyrefly', 'lsp' },
+                 filetypes = { "python" },
+                 root_dir = lspconfig.util.root_pattern("pyproject.toml", ".git"),
+             },
+         }
+     end
+    lspconfig.pyrefly.setup({
+      on_attach = on_attach,
+      capabilities = capabilities,
+    })
 
     lspconfig.rust_analyzer.setup({
         on_attach = on_attach,
