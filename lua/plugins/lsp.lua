@@ -134,20 +134,7 @@ return {
 			end, { noremap = true, silent = true, buffer = bufnr, desc = "List Workspace Folders" })
 		end
 
-		local servers = {
-			"rust_analyzer",
-			"vtsls",
-		}
-
-		mason_lspconfig.setup({
-			ensure_installed = servers,
-			automatic_enable = {
-				exclude = {
-					"rust_analyzer",
-					"vtsls",
-				},
-			},
-		})
+		mason_lspconfig.setup({})
 
 		lspconfig.eslint.setup({
 			on_attach = function(client, bufnr)
