@@ -31,6 +31,7 @@ vim.opt.wildignore = vim.opt.wildignore + { "*/node_modules/*", "*/.git/*", "*/v
 vim.opt.wildmenu = true   -- make tab completion for files/buffers act like bash
 
 -- ui
+vim.opt.winborder = "rounded"
 vim.g.have_nerd_font = true
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -40,11 +41,11 @@ vim.opt.lazyredraw = true -- don"t update the display while executing macros
 vim.opt.list = true
 -- You can also add "space" or "eol", but I feel it"s quite annoying
 vim.opt.listchars = {
-  tab = "┊ ",
-  trail = "·",
-  extends = "»",
-  precedes = "«",
-  nbsp = "×",
+    tab = "┊ ",
+    trail = "·",
+    extends = "»",
+    precedes = "«",
+    nbsp = "×",
 }
 
 -- Removes command line from bottom except when recording macro.
@@ -67,7 +68,7 @@ vim.opt.writebackup = false -- if a file is being edited by another program (or 
 -- autocomplete
 vim.opt.completeopt = { "menu", "menuone", "noselect" } -- mostly just for cmp
 vim.opt.shortmess = vim.opt.shortmess + {
-  c = true,
+    c = true,
 }                        -- hide all the completion messages, e.g. "-- XXX completion (YYY)", "match 1 of 2", "The only match", "Pattern not found"
 
 vim.opt.showmode = true  -- perfomance
