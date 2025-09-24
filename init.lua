@@ -23,9 +23,9 @@ require("lazy").setup({
         -- import your plugins
         { import = "plugins" },
     },
-    -- automatically check for plugin updates
+    -- Do not automatically check for plugin updates
     install = { colorscheme = { "cyberdream" } },
-    checker = { enabled = true },
+    checker = { enabled = false },
 })
 
 require("config.options")
