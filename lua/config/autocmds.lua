@@ -18,9 +18,11 @@ autocmd("BufWritePre", {
 })
 
 -- Don"t auto comment new lines
-autocmd("BufEnter", {
+autocmd("FileType", {
     pattern = "*",
-    command = "set fo-=c fo-=r fo-=o",
+    callback = function()
+        vim.opt_local.formatoptions:remove({ "c", "r", "o" })
+    end,
 })
 
 
