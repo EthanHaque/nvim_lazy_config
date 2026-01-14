@@ -6,6 +6,7 @@ vim.opt.signcolumn = "yes" -- always show the sign column, otherwise it would sh
 vim.opt.scrolloff = 18 -- minimal number of screen lines to keep above and below the cursor
 vim.opt.sidescrolloff = 10 -- minimal number of screen columns to keep to the left and right (horizontal) of the cursor if wrap is `false`
 vim.opt.wrap = false -- display a long line
+vim.opt.colorcolumn = "120"
 
 -- Indentation
 vim.opt.expandtab = true -- convert tabs to spaces
@@ -32,6 +33,10 @@ vim.opt.writebackup = false -- if a file is being edited by another program (or 
 vim.opt.list = true
 vim.opt.listchars = { tab = "┊ ", trail = "·", extends = "»", precedes = "«", nbsp = "×" }
 vim.opt.matchpairs:append("<:>") -- Add angle brackets to % matching
+
+-- Splits
+vim.opt.splitbelow = true -- open new split below
+vim.opt.splitright = true -- open new split to the right
 
 -- Globals
 vim.g.have_nerd_font = true
