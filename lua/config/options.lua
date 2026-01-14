@@ -91,4 +91,4 @@ vim.opt.undoreload = 10000
 vim.opt.foldmethod = "marker"
 vim.opt.foldlevel = 99
 
-vim.opt.colorcolumn=120
+vim.opt.colorcolumn = "120"
