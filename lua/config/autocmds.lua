@@ -25,10 +25,3 @@ autocmd("FileType", {
     end,
 })
 
-
--- Set colorcolumn
-autocmd("Filetype", {
-    pattern = "*",
-    command = "set colorcolumn=120",
-})
-
