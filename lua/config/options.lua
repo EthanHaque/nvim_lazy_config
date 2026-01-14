@@ -7,6 +7,7 @@ vim.opt.scrolloff = 18 -- minimal number of screen lines to keep above and below
 vim.opt.sidescrolloff = 10 -- minimal number of screen columns to keep to the left and right (horizontal) of the cursor if wrap is `false`
 vim.opt.wrap = false -- display a long line
 vim.opt.colorcolumn = "120"
+vim.opt.winborder = "rounded"
 
 -- Indentation
 vim.opt.expandtab = true -- convert tabs to spaces
