@@ -1,6 +1,6 @@
 ---@type vim.lsp.Config
 return {
-	cmd = { "java", "-jar", "vespa-language-server.jar" },
+	cmd = { "vespals" },
 	filetypes = { "sd", "profile", "yql" },
 	root_markers = {
 		".git",

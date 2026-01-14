@@ -17,6 +17,14 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
+vim.filetype.add({
+	extension = {
+		sd = "sd",
+		profile = "profile",
+		yql = "yql",
+	},
+})
+
 require("lazy").setup({
 	spec = {
 		-- import your plugins
