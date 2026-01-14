@@ -30,10 +30,3 @@ autocmd("Filetype", {
     command = "set colorcolumn=120",
 })
 
-autocmd("Filetype", {
-    pattern = { "gitcommit", "markdown", "text", "yaml" },
-    callback = function()
-        vim.opt_local.wrap = true
-        vim.opt_local.spell = true
-    end,
-})
