@@ -9,10 +9,6 @@ vim.opt.wrap = false -- display a long line
 vim.opt.colorcolumn = "120"
 vim.opt.winborder = "rounded"
 
--- Indentation
-vim.opt.shiftwidth = 4 -- the number of spaces inserted for each indentation
-vim.opt.tabstop = 4
-
 -- Search
 vim.opt.ignorecase = true -- ignore case in search patterns
 vim.opt.smartcase = true -- smart case
