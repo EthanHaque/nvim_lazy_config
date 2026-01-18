@@ -41,8 +41,3 @@ vim.opt.splitright = true -- open new split to the right
 
 -- Globals
 vim.g.have_nerd_font = true
-
--- Removes command line from bottom except when recording macro.
-vim.opt.cmdheight = 0
-vim.cmd([[ autocmd RecordingLeave * set cmdheight=0 ]])
-vim.cmd([[ autocmd RecordingEnter * set cmdheight=1 ]])
