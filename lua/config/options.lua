@@ -10,11 +10,8 @@ vim.opt.colorcolumn = "120"
 vim.opt.winborder = "rounded"
 
 -- Indentation
-vim.opt.expandtab = true -- convert tabs to spaces
 vim.opt.shiftwidth = 4 -- the number of spaces inserted for each indentation
-vim.opt.softtabstop = 4 -- when hitting <BS>, pretend like a tab is removed, even if spaces
 vim.opt.tabstop = 4
-vim.opt.shiftround = false -- use multiple of shiftwidth when indenting with "<" and ">"
 
 -- Search
 vim.opt.ignorecase = true -- ignore case in search patterns
