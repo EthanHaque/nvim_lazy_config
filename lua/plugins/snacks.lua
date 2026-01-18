@@ -6,7 +6,24 @@ return {
 		bigfile = { enabled = true },
 		gh = { enabled = true },
 		image = { enabled = true },
-		picker = { enabled = true },
+		picker = {
+			enabled = true,
+			sources = {
+				files = {
+					hidden = true,
+					ignored = true,
+					exclude = {
+						".git/*",
+						"node_modules/*",
+						".venv/*",
+						"**/__pycache__/*",
+						"build/*",
+						".DS_Store",
+						".rumdl_cache/*",
+					},
+				},
+			},
+		},
 		quickfile = { enabled = true },
 		statuscolumn = { enabled = true },
 	},
