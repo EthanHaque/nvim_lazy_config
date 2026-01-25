@@ -8,6 +8,7 @@ vim.opt.sidescrolloff = 10 -- minimal number of screen columns to keep to the le
 vim.opt.wrap = false -- display a long line
 vim.opt.colorcolumn = "120"
 vim.opt.winborder = "rounded"
+vim.opt.cmdheight = 0
 
 -- Indentation
 vim.opt.expandtab = true -- convert tabs to spaces
