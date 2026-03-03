@@ -2,7 +2,6 @@ return {
 	{
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
-		config = true,
 		opts = {
 			check_ts = true,
 			ts_config = {
@@ -18,5 +17,18 @@ return {
 			fast_wrap = {},
 			disable_filetype = { "TelescopePrompt", "vim" },
 		},
+		config = function(_, opts)
+			-- Initialize autopairs with your opts
+			local npairs = require("nvim-autopairs")
+			npairs.setup(opts)
+
+			-- Add Typst-specific rules
+			local Rule = require("nvim-autopairs.rule")
+			npairs.add_rules({
+				Rule("$", "$", "typst"),
+				Rule("*", "*", "typst"),
+				Rule("_", "_", "typst"),
+			})
+		end,
 	},
 }
