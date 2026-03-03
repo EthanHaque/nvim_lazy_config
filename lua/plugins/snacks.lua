@@ -5,7 +5,10 @@ return {
 	opts = {
 		bigfile = { enabled = true },
 		gh = { enabled = true },
-		image = { enabled = true },
+		image = {
+			enabled = true,
+			math = { enabled = false },
+		},
 		picker = {
 			enabled = true,
 			sources = {
