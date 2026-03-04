@@ -12,8 +12,8 @@ require("nvim-surround").buffer_setup({
 					return { { "#text(fill: " .. color .. ")[" }, { "]" } }
 				end
 			end,
-			find = "#text$(fill: .-%)%[.-%]",
-			delete = "^(#text%(fill: .-%)%[)().-(%])()$",
+			find = "#text%(fill: [^%)]+%)%[.-%]",
+			delete = "^(#text%(fill: [^%)]+%)%[)().-(%])()$",
 		},
 	},
 })
