@@ -1,34 +1,30 @@
 return {
-	{
-		"windwp/nvim-autopairs",
-		event = "InsertEnter",
-		opts = {
-			check_ts = true,
-			ts_config = {
-				lua = { "string" }, -- it will not add a pair on that treesitter node
-				javascript = { "template_string" },
-				java = false, -- don"t check treesitter on java
-			},
-
-			-- Don"t add pairs if it already has a close pair in the same line
-			enable_check_bracket_line = false,
-			-- Don"t add pairs if the next char is alphanumeric
-			ignored_next_char = "[%w%.]", -- will ignore alphanumeric and `.` symbol
-			fast_wrap = {},
-			disable_filetype = { "TelescopePrompt", "vim" },
+	"windwp/nvim-autopairs",
+	event = "InsertEnter",
+	opts = {
+		check_ts = true,
+		ts_config = {
+			lua = { "string" },
+			javascript = { "template_string" },
+			java = false,
 		},
-		config = function(_, opts)
-			-- Initialize autopairs with your opts
-			local npairs = require("nvim-autopairs")
-			npairs.setup(opts)
-
-			-- Add Typst-specific rules
-			local Rule = require("nvim-autopairs.rule")
-			npairs.add_rules({
-				Rule("$", "$", "typst"),
-				Rule("*", "*", "typst"),
-				Rule("_", "_", "typst"),
-			})
-		end,
+		enable_check_bracket_line = false,
+		ignored_next_char = "[%w%.]",
+		fast_wrap = {},
+		disable_filetype = { "TelescopePrompt", "vim" },
 	},
+	config = function(_, opts)
+		local npairs = require("nvim-autopairs")
+		local Rule = require("nvim-autopairs.rule")
+		local cond = require("nvim-autopairs.conds")
+
+		npairs.setup(opts)
+
+		-- Use conds to declaratively define the step-over (quote-like) behavior
+		npairs.add_rules({
+			Rule("$", "$", "typst"):with_move(cond.after_text("$")),
+			Rule("*", "*", "typst"):with_move(cond.after_text("*")),
+			Rule("_", "_", "typst"):with_move(cond.after_text("_")),
+		})
+	end,
 }
