@@ -24,7 +24,6 @@ return {
 		npairs.add_rules({
 			Rule("$", "$", "typst"):with_move(cond.after_text("$")),
 			Rule("*", "*", "typst"):with_move(cond.after_text("*")),
-			Rule("_", "_", "typst"):with_move(cond.after_text("_")),
 		})
 	end,
 }
