@@ -13,6 +13,7 @@ return {
 			["markdown"] = { "prettier" },
 			["lua"] = { "stylua" },
 			["typst"] = { "typstyle" },
+			["nix"] = { "nixfmt" },
 		},
 		format_on_save = {
 			timeout_ms = 500,
